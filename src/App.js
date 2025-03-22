@@ -1,18 +1,22 @@
 import React from 'react';
-import Header from './Header';
-import Nav from './Nav';
-import Main from './Main';
-import Footer from './Footer';
 
-const App = () => {
+function App() {
   return (
-    <>
-      <Header />
-      <Nav />
-      <Main />
-      <Footer />
-    </>
+    <div className="grid-container">
+      <header className="header">Welcome to Little Lemon</header>
+      <nav className="nav">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Menu</li>
+          <li>Reservations</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <main className="main">This is the main content area.</main>
+      <footer className="footer">© 2024 Little Lemon. All rights reserved.</footer>
+    </div>
   );
-};
+}
 
 export default App;
