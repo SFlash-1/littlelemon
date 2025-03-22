@@ -1,22 +1,24 @@
-import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Chicago from './components/Chicago';
+import Nav from './components/Nav';
+import BookingForm from './components/BookingForm';
+import Homepage from './components/HomePage';
+import CustomersSay from './components/CustomersSay';
+import Specials from './components/Specials';
 
 function App() {
-  return (
-    <div className="grid-container">
-      <header className="header">Welcome to Little Lemon</header>
-      <nav className="nav">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Menu</li>
-          <li>Reservations</li>
-          <li>Contact</li>
-        </ul>
-      </nav>
-      <main className="main">This is the main content area.</main>
-      <footer className="footer">© 2024 Little Lemon. All rights reserved.</footer>
-    </div>
-  );
+    return (
+        <>
+            <Nav />
+            <Routes>
+                <Route path="/HomePage" element={<Homepage />} />
+                <Route path="/CustomersSay" element={<CustomersSay />} />
+                <Route path="/Specials" element={<Specials />} />
+                <Route path="/Chicago" element={<Chicago />} />
+                <Route path="/BookingForm" element={<BookingForm />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

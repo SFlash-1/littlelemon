@@ -1,0 +1,24 @@
+/* Nav.css */
+nav {
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Align items horizontally */
+    gap: 50px; /* Add spacing between items */
+    justify-content: center;
+  }
+
+  nav ul li a {
+    color: #D68A00; /* Set text color to yellow */
+    font-weight: bold; /* Make the text bold */
+    text-decoration: none; /* Remove underline */
+    font-family: Arial;
+  }
+
+  nav ul li a:hover {
+    color: orange; /* Change color on hover (optional) */
+  }

@@ -1,0 +1,36 @@
+.chicago-container {
+    display: flex;
+    flex-direction: column; /* Stack the top and bottom halves vertically */
+    gap: 20px; /* Add spacing between the two halves */
+    padding: 20px;
+    background-color: lightblue;
+}
+
+.top-half {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out text and image */
+    gap: 20px; /* Add spacing between text and image */
+}
+
+.bottom-half {
+    display: flex;
+    flex-direction: row-reverse; /* Reverse the order: image on the left, text on the right */
+    align-items: center;
+    gap: 20px;
+}
+
+.text {
+    flex: 1; /* Allow text to take up equal space */
+}
+
+.image {
+    flex: 1; /* Allow the image container to take up equal space */
+    text-align: center; /* Center the image horizontally */
+}
+
+.image img {
+    max-width: 100%; /* Ensure the image doesn't overflow */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners to the image */
+}
