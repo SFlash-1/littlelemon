@@ -37,7 +37,7 @@ const Homepage = () => {
                 <p>
                     Ready to enjoy our food at home? Click below to book a delivery and have your favorite dishes brought to your doorstep.
                 </p>
-                <Link to="/BookingForm" className="booking-button">Book Now</Link>
+                <Link to="/BookingPage" className="booking-button">Book Now</Link>
             </div>
         </div>
     );

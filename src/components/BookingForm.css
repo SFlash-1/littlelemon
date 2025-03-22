@@ -1,0 +1,44 @@
+/* BookingForm.css */
+.booking-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #ffe5b4; /* Light orange background */
+}
+
+.booking-form {
+    display: grid;
+    max-width: 300px;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff; /* White background for the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.booking-form label {
+    font-weight: bold;
+    color: #333; /* Darker text color */
+}
+
+.booking-form input,
+.booking-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.booking-form input[type="submit"] {
+    background-color: #ff7f50; /* Coral color for the button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.booking-form input[type="submit"]:hover {
+    background-color: #ff6347; /* Darker coral on hover */
+}
