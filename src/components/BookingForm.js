@@ -1,76 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import './BookingForm.css'; // Import the CSS file
-import { initializeTimes, updateTimes } from '../Main'; // Adjust the path
+import React, { useState } from 'react';
+import './BookingForm.css';
 
-const BookingForm = ({ formData, handleChange, handleSubmit }) => {
-    const [availableTimes, setAvailableTimes] = useState([]); // State for available times
+const BookingForm = ({ addBooking }) => {
+    const [formData, setFormData] = useState({
+        date: '',
+        time: '',
+        guests: 1,
+        occasion: 'Birthday',
+    });
 
-    // Initialize available times on mount
-    useEffect(() => {
-        const times = initializeTimes(); // Fetch available times for today's date
-        setAvailableTimes(times); // Set the available times
-    }, []);
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData({ ...formData, [id]: value });
+    };
 
-    // Handle date change and update available times
-    const handleDateChange = (event) => {
-        const newDate = event.target.value; // Get the selected date
-        handleChange(event); // Call the parent handleChange function
-        const times = updateTimes(newDate); // Fetch available times for the new date
-        setAvailableTimes(times); // Update the available times
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addBooking(formData); // Add the new booking
+        alert('Booking added successfully!');
+        setFormData({ date: '', time: '', guests: 1, occasion: 'Birthday' }); // Reset form
     };
 
     return (
         <div className="booking-form-container">
-            <form className="booking-form" onSubmit={handleSubmit}>
-                {/* Date Input */}
-                <label htmlFor="res-date">Choose date</label>
-                <input
-                    type="date"
-                    id="date"
-                    value={formData.date}
-                    onChange={handleDateChange} // Use the new handleDateChange function
-                />
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="date">Date:</label>
+            <input
+                type="date"
+                id="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+            />
 
-                {/* Time Input */}
-                <label htmlFor="res-time">Choose time</label>
-                <select
-                    id="time"
-                    value={formData.time}
-                    onChange={handleChange}
-                >
-                    {availableTimes.map((time, index) => (
-                        <option key={index} value={time}>
-                            {time}
-                        </option>
-                    ))}
-                </select>
+            <label htmlFor="time">Time:</label>
+            <input
+                type="time"
+                id="time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+            />
 
-                {/* Number of Guests Input */}
-                <label htmlFor="guests">Number of guests</label>
-                <input
-                    type="number"
-                    id="guests"
-                    placeholder="1"
-                    min="1"
-                    max="10"
-                    value={formData.guests}
-                    onChange={handleChange}
-                />
+            <label htmlFor="guests">Number of Guests:</label>
+            <input
+                type="number"
+                id="guests"
+                value={formData.guests}
+                onChange={handleChange}
+                min="1"
+                max="10"
+                required
+            />
 
-                {/* Occasion Input */}
-                <label htmlFor="occasion">Occasion</label>
-                <select
-                    id="occasion"
-                    value={formData.occasion}
-                    onChange={handleChange}
-                >
-                    <option value="Birthday">Birthday</option>
-                    <option value="Anniversary">Anniversary</option>
-                </select>
+            <label htmlFor="occasion">Occasion:</label>
+            <select
+                id="occasion"
+                value={formData.occasion}
+                onChange={handleChange}
+                required
+            >
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Dinner">Dinner</option>
+            </select>
 
-                {/* Submit Button */}
-                <input type="submit" value="Make Your Reservation" />
-            </form>
+            <button type="submit">Submit</button>
+        </form>
         </div>
     );
 };

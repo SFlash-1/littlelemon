@@ -1,46 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BookingForm from './BookingForm';
+import BookingTable from './BookingTable';
 
 const BookingPage = () => {
-    const [formData, setFormData] = useState({
-        date: '',
-        time: '',
-        guests: 1,
-        occasion: 'Birthday',
+    const [bookings, setBookings] = useState(() => {
+        const storedBookings = localStorage.getItem('bookings');
+        return storedBookings ? JSON.parse(storedBookings) : [];
     });
 
-    const [availableTimes, setAvailableTimes] = useState([]);
-
-    useEffect(() => {
-        const fetchAvailableTimes = async () => {
-            const today = new Date().toISOString().split('T')[0];
-            const times = await fetchData(today); // Use the locally defined fetchData function
-            setAvailableTimes(times);
-        };
-
-        fetchAvailableTimes();
-    }, []);
-
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormData({ ...formData, [id]: value });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
+    const addBooking = (newBooking) => {
+        const updatedBookings = [...bookings, newBooking];
+        setBookings(updatedBookings);
+        localStorage.setItem('bookings', JSON.stringify(updatedBookings));
     };
 
     return (
         <div>
             <h1>Book Your Reservation</h1>
-            <p>Fill out the form below to book your reservation with us.</p>
-            <BookingForm
-                formData={formData}
-                availableTimes={availableTimes}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-            />
+            <BookingForm addBooking={addBooking} />
+            <BookingTable bookings={bookings} />
         </div>
     );
 };

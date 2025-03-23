@@ -1,34 +1,25 @@
-import React, { useReducer } from 'react';
-import BookingForm from './components/BookingForm';
-
-
-export const initializeTimes = () => {
-  if (typeof window.fetchAPI !== 'function') {
-      console.error('fetchAPI is not defined. Make sure the API script is loaded.');
-      return [];
-  }
-
-  const today = new Date(); // Get today's date
-  const availableTimes = window.fetchAPI(today); // Fetch available times using fetchAPI
-  return availableTimes; // Return the fetched times
-};
-
-export const updateTimes = (selectedDate) => {
-  const times = window.fetchAPI(new Date(selectedDate)); // Pass the selected date to fetchAPI
-  return times; // Return the fetched times
-};
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import BookingPage from './BookingPage';
+import { submitAPI } from './components/api';
 
 const Main = () => {
-    // UseReducer for availableTimes
-    const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
+    console.log('rendering in Main.js:'); //
+    const navigate = useNavigate(); // Initialize the useNavigate hook
+
+    const submitForm = (formData) => {
+        const submissionSuccess = submitAPI(formData); // Call the submitAPI function
+        if (submissionSuccess) {
+            navigate('/confirmation'); // Navigate to the confirmation page
+        } else {
+            alert('Failed to submit the reservation. Please try again.');
+        }
+    };
 
     return (
         <div>
-            <h1>Welcome to Our Booking System</h1>
-            <BookingForm
-                availableTimes={availableTimes}
-                dispatch={dispatch}
-            />
+            console.log('submitForm in Main.js:', submitForm); //
+            <BookingPage submitForm={submitForm} /> {/* Pass submitForm as a prop */}
         </div>
     );
 };

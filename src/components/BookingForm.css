@@ -1,44 +1,76 @@
 /* BookingForm.css */
 .booking-form-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #ffe5b4; /* Light orange background */
-}
-
-.booking-form {
-    display: grid;
-    max-width: 300px;
-    gap: 20px;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 50px auto; /* Center the form */
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff; /* White background for the form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    background-color: #fff8dc; /* Light yellow background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: 'Arial', sans-serif;
 }
 
-.booking-form label {
+.booking-form-container label {
+    font-size: 14px;
     font-weight: bold;
+    margin-bottom: 5px;
     color: #333; /* Darker text color */
 }
 
-.booking-form input,
-.booking-form select {
+.booking-form-container input,
+.booking-form-container select {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+    background-color: #fff; /* White background for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.booking-form input[type="submit"] {
-    background-color: #ff7f50; /* Coral color for the button */
+.booking-form-container input:focus,
+.booking-form-container select:focus {
+    border-color: #ffd700; /* Gold border on focus */
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Subtle gold glow */
+    outline: none;
+}
+
+.booking-form-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffd700; /* Gold button */
     color: white;
     border: none;
-    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.booking-form input[type="submit"]:hover {
-    background-color: #ff6347; /* Darker coral on hover */
+.booking-form-container button:hover {
+    background-color: #ffc107; /* Slightly darker gold on hover */
+    transform: scale(1.02); /* Slight zoom effect */
+}
+
+.booking-form-container button:active {
+    background-color: #ffb300; /* Even darker gold on click */
+    transform: scale(0.98); /* Slight shrink effect */
+}
+
+.booking-form-container input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(50%); /* Style the date picker icon */
+}
+
+@media (max-width: 500px) {
+    .booking-form-container {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .booking-form-container button {
+        font-size: 14px;
+    }
 }
