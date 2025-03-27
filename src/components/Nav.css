@@ -1,6 +1,13 @@
 /* Nav.css */
 nav {
     text-align: center;
+    background-color: #495e57;
+}
+
+.logo img {
+  height: 50px; /* Adjust as needed */
+  width: auto;
+  display: block;
 }
 
 nav ul {

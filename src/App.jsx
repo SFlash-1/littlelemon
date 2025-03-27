@@ -12,7 +12,8 @@ function App() {
         <>
             <Nav />
             <Routes>
-                <Route path="/HomePage" element={<Homepage />} />
+                <Route path="/" element={<Homepage />} />
+                <Route path="/Homepage" element={<Homepage />} />
                 <Route path="/CustomersSay" element={<CustomersSay />} />
                 <Route path="/Specials" element={<Specials />} />
                 <Route path="/Chicago" element={<Chicago />} />
