@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Chicago from './components/Chicago';
 import Nav from './components/Nav';
 import BookingPage from './components/BookingPage';

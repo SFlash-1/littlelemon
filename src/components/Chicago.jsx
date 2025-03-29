@@ -1,3 +1,4 @@
+import React from 'react';
 import './Chicago.css';
 import chicagoImage from '../images/chicago.jpg';
 import beachImage from '../images/beach.jpg';
